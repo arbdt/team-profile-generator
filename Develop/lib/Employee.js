@@ -1,10 +1,10 @@
 // Employee base class definition
 class Employee {
     //constructor
-    constructor(name, id, email){
-        this.name = name; //set employee name
-        this.id = id; // set employee ID
-        this.email = email; // set employee email
+    constructor(nameInput, idInput, emailInput){
+        this.name = nameInput; //set employee name
+        this.id = idInput; // set employee ID
+        this.email = emailInput; // set employee email
     }
 
     // function to get name
