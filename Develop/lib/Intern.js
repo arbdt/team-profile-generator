@@ -13,7 +13,7 @@ class Intern extends Employee {
 
     // class-specific methods
 
-    // function to get github ID
+    // function to get school name
     getSchool() {
         return this.school;
     }
