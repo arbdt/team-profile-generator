@@ -1,4 +1,4 @@
-// TODO: Write code to define and export the Intern class.  HINT: This class should inherit from Employee.
+// Intern subclass definition
 const Employee = require("./Employee");
 
 class Intern extends Employee {
@@ -11,20 +11,7 @@ class Intern extends Employee {
       
     }
 
-    // function to get name
-    getName() {
-        return this.name;
-    }
-    
-    // function to get ID
-    getId() {
-        return this.id;
-    }
-    
-    // function to get email
-    getEmail() {
-        return this.email;
-    }
+    // class-specific methods
 
     // function to get github ID
     getSchool() {
