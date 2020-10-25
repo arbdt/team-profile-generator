@@ -1,3 +1,4 @@
+// import required modules and classes
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -5,6 +6,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// variables for file generation
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -54,54 +56,99 @@ const entryTypeQuestion = {
 
 // manager questions
 const managerQuestions = [
-    {name: "employeeName",
-    type: "input",
-    message: "What is the employee's name?"},
-    {name: "employeeID",
-    type: "input",
-    message: "What is the employee's ID number?"},
-    {name: "employeeEmail",
-    type: "input",
-    message: "What is their email address?"},
-    {name: "managerOffice",
-    type: "input",
-    message: "What is their office number?"}
+    {
+        name: "employeeName",
+        type: "input",
+        message: "What is the employee's name?",
+        validate: validateAnswers
+    },
+    {
+        name: "employeeID",
+        type: "input",
+        message: "What is the employee's ID number?",
+        validate: validateAnswers
+    },
+    {
+        name: "employeeEmail",
+        type: "input",
+        essage: "What is their email address?",
+        validate: validateAnswers
+    },
+    {
+        name: "managerOffice",
+        type: "input",
+        message: "What is their office number?",
+        validate: validateAnswers
+    }
 ];
 
 //engineer questions
 const engineerQuestions = [
-    {name: "employeeName",
-    type: "input",
-    message: "What is the employee's name?"},
-    {name: "employeeID",
-    type: "input",
-    message: "What is the employee's ID number?"},
-    {name: "employeeEmail",
-    type: "input",
-    message: "What is their email address?"},
-    {name: "engineerGithub",
-    type: "input",
-    message: "What is their Github username?"}
+    {
+        name: "employeeName",
+        type: "input",
+        message: "What is the employee's name?",
+        validate: validateAnswers
+    },
+    {
+        name: "employeeID",
+        type: "input",
+        message: "What is the employee's ID number?",
+        validate: validateAnswers
+    },
+    {
+        name: "employeeEmail",
+        type: "input",
+        message: "What is their email address?",
+        validate: validateAnswers
+    },
+    {
+        name: "engineerGithub",
+        type: "input",
+        message: "What is their Github username?",
+        validate: validateAnswers
+    }
 ];
 
 //intern questions
 const internQuestions = [
-    {name: "employeeName",
-    type: "input",
-    message: "What is the employee's name?"},
-    {name: "employeeID",
-    type: "input",
-    message: "What is the employee's ID number?"},
-    {name: "employeeEmail",
-    type: "input",
-    message: "What is their email address?"},
-    {name: "internSchool",
-    type: "input",
-    message: "What is the name of their school?"}
+    {
+        name: "employeeName",
+        type: "input",
+        message: "What is the employee's name?",
+        validate: validateAnswers
+    },
+    {
+        name: "employeeID",
+        type: "input",
+        message: "What is the employee's ID number?",
+        validate: validateAnswers
+    },
+    {
+        name: "employeeEmail",
+        type: "input",
+        message: "What is their email address?",
+        validate: validateAnswers
+    },
+    {
+        name: "internSchool",
+        type: "input",
+        message: "What is the name of their school?",
+        validate: validateAnswers
+    }
 ];
 
 // array containing employees created
 let employeeArray = [];
+
+//function to valide question answers
+function validateAnswers(answer){
+    if (answer == ""){
+        return "Please enter an answer.";
+    } else {
+        return true;
+    }
+}
 
 //function containing question prompts
 async function startQueries(){
@@ -136,12 +183,16 @@ async function askEmployeeType(){
             console.log("Creating Manager:");
             createManager();
         }
+        // if employee is an Engineer
         else if (employeeTypeAnswer.employeeType == "Engineer"){
             console.log("Creating Engineer:");
+            // ask Engineer questions 
             createEngineer();
         }
+        // if employee is an intern
         else if (employeeTypeAnswer.employeeType == "Intern"){
             console.log("Intern!");
+            // ask intern questions
             createIntern();
         }
     }
