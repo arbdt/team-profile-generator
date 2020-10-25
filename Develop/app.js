@@ -35,12 +35,16 @@ const Choice = require("inquirer/lib/objects/choice");
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
+
+// sets of questions
+//opening question
 const enterMoreQuestion = {
     name: "enteringData",
     type: "confirm",
     message: "Do you want to add an employee?"
 }
 
+// employee type question
 const entryTypeQuestion = {
     name: "employeeType",
     type: "list",
@@ -48,6 +52,7 @@ const entryTypeQuestion = {
     choices: ["Manager", "Engineer", "Intern"]
 };
 
+// manager questions
 const managerQuestions = [
     {name: "employeeName",
     type: "input",
@@ -63,6 +68,7 @@ const managerQuestions = [
     message: "What is their office number?"}
 ];
 
+//engineer questions
 const engineerQuestions = [
     {name: "employeeName",
     type: "input",
@@ -70,11 +76,15 @@ const engineerQuestions = [
     {name: "employeeID",
     type: "input",
     message: "What is the employee's ID number?"},
+    {name: "employeeEmail",
+    type: "input",
+    message: "What is their email address?"},
     {name: "engineerGithub",
     type: "input",
     message: "What is their Github username?"}
 ];
 
+//intern questions
 const internQuestions = [
     {name: "employeeName",
     type: "input",
@@ -82,10 +92,17 @@ const internQuestions = [
     {name: "employeeID",
     type: "input",
     message: "What is the employee's ID number?"},
+    {name: "employeeEmail",
+    type: "input",
+    message: "What is their email address?"},
     {name: "internSchool",
     type: "input",
     message: "What is the name of their school?"}
 ];
+
+// array containing employees created
+let employeeArray = [];
+
 
 //function containing question prompts
 async function startQueries(){
@@ -130,12 +147,14 @@ async function askEmployeeType(){
         console.error(errors);
     }
 }
-/*
+
 // function to create Manager from input
 async function createManager(){
     try{
         //ask Manager questions
         let managerAnswers = await inquirer.prompt(managerQuestions);
+
+        //create new Manager instance
         let newManager = new Manager(managerAnswers.employeeName, managerAnswers.employeeID, managerAnswers.employeeEmail, managerAnswers.managerOffice);
         console.log(newManager);
     }
@@ -143,5 +162,5 @@ async function createManager(){
         console.error(errors);
     }
 }
-*/
+
 startQueries();
