@@ -142,6 +142,7 @@ async function askEmployeeType(){
         }
         else if (employeeTypeAnswer.employeeType == "Intern"){
             console.log("Intern!");
+            createIntern();
         }
     }
     catch(errors){
@@ -176,11 +177,30 @@ async function createEngineer(){
         //ask Engineer questions
         let engineerAnswers = await inquirer.prompt(engineerQuestions);
 
-        //create new Manager instance
+        //create new Engineer instance
         let newEngineer = new Engineer(engineerAnswers.employeeName, engineerAnswers.employeeID, engineerAnswers.employeeEmail, engineerAnswers.engineerGithub);
         console.log(newEngineer);
 
         employeeArray.push(newEngineer); // save new Engineer to employee list
+
+        startQueries(); // ask for more employees
+    }
+    catch(errors){
+        console.error(errors);
+    }
+}
+
+// function to create Intern from input
+async function createIntern(){
+    try{
+        //ask Intern questions
+        let internAnswers = await inquirer.prompt(internQuestions);
+
+        //create new Intern instance
+        let newIntern = new Intern(internAnswers.employeeName, internAnswers.employeeID, internAnswers.employeeEmail, internAnswers.internSchool);
+        console.log(newIntern);
+
+        employeeArray.push(newIntern); // save new Intern to employee list
 
         startQueries(); // ask for more employees
     }
