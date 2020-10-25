@@ -106,7 +106,7 @@ async function startQueries(){
         console.error(errors);
     }
 }
-/*
+
 // function to determine Employee object subtype
 async function askEmployeeType(){
     try{
@@ -130,7 +130,7 @@ async function askEmployeeType(){
         console.error(errors);
     }
 }
-
+/*
 // function to create Manager from input
 async function createManager(){
     try{
