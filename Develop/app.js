@@ -55,6 +55,9 @@ const managerQuestions = [
     {name: "employeeID",
     type: "input",
     message: "What is the employee's ID number?"},
+    {name: "employeeEmail",
+    type: "input",
+    message: "What is their email address?"},
     {name: "managerOffice",
     type: "input",
     message: "What is their office number?"}
@@ -83,3 +86,62 @@ const internQuestions = [
     type: "input",
     message: "What is the name of their school?"}
 ];
+
+//function containing question prompts
+async function startQueries(){
+    try{
+        // ask overall question
+        let moreEntriesAnswer = await inquirer.prompt(enterMoreQuestion);
+
+        //if yes, ask what kind of employee
+        if(moreEntriesAnswer.enteringData === true){
+            askEmployeeType();
+        }
+        else {
+            //stop asking and generate html file
+            console.log("No More Entries!")
+        }
+
+    }catch(errors){
+        console.error(errors);
+    }
+}
+/*
+// function to determine Employee object subtype
+async function askEmployeeType(){
+    try{
+        // ask for employee type
+        let employeeTypeAnswer = await inquirer.prompt(entryTypeQuestion);
+
+        // if type is manager, ask manager questions
+        if (employeeTypeAnswer.employeeType == "Manager"){
+            // generate Manager using Manager Questions
+            console.log("Manager!");
+            createManager();
+        }
+        else if (employeeTypeAnswer.employeeType == "Engineer"){
+            console.log("Engineer!");
+        }
+        else if (employeeTypeAnswer.employeeType == "Intern"){
+            console.log("Intern!");
+        }
+    }
+    catch(errors){
+        console.error(errors);
+    }
+}
+
+// function to create Manager from input
+async function createManager(){
+    try{
+        //ask Manager questions
+        let managerAnswers = await inquirer.prompt(managerQuestions);
+        let newManager = new Manager(managerAnswers.employeeName, managerAnswers.employeeID, managerAnswers.employeeEmail, managerAnswers.managerOffice);
+        console.log(newManager);
+    }
+    catch(errors){
+        console.error(errors);
+    }
+}
+*/
+startQueries();
