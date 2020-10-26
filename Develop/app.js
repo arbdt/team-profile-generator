@@ -71,7 +71,7 @@ const managerQuestions = [
     {
         name: "employeeEmail",
         type: "input",
-        essage: "What is their email address?",
+        message: "What is their email address?",
         validate: validateAnswers
     },
     {
@@ -163,7 +163,18 @@ async function startQueries(){
         else {
             //stop asking and generate html file
             console.log("No More Entries! Rendering Employee List...")
-            console.log(employeeArray);
+            // send employee data to HTML renderer
+            let renderedHTML = render(employeeArray);
+            // check if "output" folder exists and create it if not
+            fs.mkdir("output", {recursive: true}, (err) => {
+                if (err) {
+                    return console.error(err);
+                } else {
+                    console.log("directory created")
+                }
+            });
+            // write to file
+            fs.writeFileSync(outputPath, renderedHTML, "utf8");
         }
 
     }catch(errors){

@@ -1,3 +1,6 @@
+// THIS FILE WAS PROVIDED TO ME AS IS
+// From what I understand, it uses regex to search the HTML template files for sections with double curly brackets "{{like this}}",
+// and inserts properties of Employee subclass objects.
 const path = require("path");
 const fs = require("fs");
 
