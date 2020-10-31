@@ -162,7 +162,7 @@ async function startQueries(){
         }
         else {
             //stop asking and generate html file
-            console.log("No More Entries! Rendering Employee List...")
+            console.log("Compiling entries... Rendering Employee List...")
             // send employee data to HTML renderer
             let renderedHTML = render(employeeArray);
             // check if "output" folder exists and create it if not
@@ -170,7 +170,7 @@ async function startQueries(){
                 if (err) {
                     return console.error(err);
                 } else {
-                    console.log("directory created")
+                    console.log("Output created.")
                 }
             });
             // write to file
@@ -202,7 +202,7 @@ async function askEmployeeType(){
         }
         // if employee is an intern
         else if (employeeTypeAnswer.employeeType == "Intern"){
-            console.log("Intern!");
+            console.log("Creating Intern:");
             // ask intern questions
             createIntern();
         }
@@ -220,7 +220,7 @@ async function createManager(){
 
         //create new Manager instance
         let newManager = new Manager(managerAnswers.employeeName, managerAnswers.employeeID, managerAnswers.employeeEmail, managerAnswers.managerOffice);
-        console.log(newManager); //confirming content for debugging
+        console.log("Manager created."); //confirming content for debugging
 
         // save to array
         employeeArray.push(newManager);
@@ -241,7 +241,7 @@ async function createEngineer(){
 
         //create new Engineer instance
         let newEngineer = new Engineer(engineerAnswers.employeeName, engineerAnswers.employeeID, engineerAnswers.employeeEmail, engineerAnswers.engineerGithub);
-        console.log(newEngineer);
+        console.log("Engineer created.");
 
         employeeArray.push(newEngineer); // save new Engineer to employee list
 
@@ -260,7 +260,7 @@ async function createIntern(){
 
         //create new Intern instance
         let newIntern = new Intern(internAnswers.employeeName, internAnswers.employeeID, internAnswers.employeeEmail, internAnswers.internSchool);
-        console.log(newIntern);
+        console.log("Intern created.");
 
         employeeArray.push(newIntern); // save new Intern to employee list
 
