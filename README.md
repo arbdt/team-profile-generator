@@ -14,7 +14,7 @@ The resulting html file is saved into the `output` folder as `team.html`. If the
 
 ## Examples
 A demonstration of the application's command line interface is below:
-![image](.\preview-team-generator.gif)
+![image](./preview-team-generator-cmd-gif.gif)
 
 The following is an example of the resulting `team.html` file as viewed in a browser:
-![image](.\team-profile-preview.png)
+![image](./team-profile-preview.png)
